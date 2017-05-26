@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0075)https://sdkp.pjwstk.edu.pl/html/lan/utaskshtml/U_PROD_CONS/U_PROD_CONS.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="Author" content="TLL">
+    <meta name="GENERATOR" content="Mozilla/4.76 [en] (Win98; U)
+      [Netscape]">
+    <title>U_PROD_CONS</title></head>
+<body>
+    <b></b>
+    <b> </b><span style="font-weight: bold;">
+      Zrealizować </span><span style="font-weight: bold;"><b>klasyczny
+        problem współbieżności </b>Producent - Konsument<b> </b>za
+      pomocą:<br>
+      <br>
+      a. (8p) Koordynacji wątków przy użyciu schematu wait-notify</span><span style="font-weight: bold;"><br>
+    </span><span style="font-weight: bold;"></span><span style="font-weight: bold;">b. </span><span style="font-weight: bold;">(3p) Blokujących kolejek </span><b>(</b>ArrayBlockingQueue<b>,
+      ...)</b><br>
+    <span style="font-weight: bold;"></span>
+    <p><b>Producent produkuje produkty i umieszcza je w buforze, a
+        konsument pobiera je stamtąd </b>w kolejności ich umieszczania<span style="font-weight: bold;"></span><b style="font-weight: bold;">.</b> </p>
+    <p><b><u>Szczegóły:</u></b> </p>
+    <p><b>Produkty są liczbami całkowitymi wygenerowanymi
+        (wyprodukowanymi) losowo przez producenta.</b> </p>
+    
+    <p><b>Bufor jest obiektem klasy </b>Buffer<b> zawierającej między
+        innymi metody </b>int get()<i> </i><b>- pobierającą liczbę z
+        bufora i </b>put(int n)<b> - wstawiającą liczbę do bufora. Bufor </b><b>ma ograniczoną
+        pojemność. W danej chwili dostęp do bufora może mieć albo
+        producent, albo konsument.&nbsp;</b></p><p><b>Producent jest obiektem klasy </b>Producer<b> (np.
+        implementującej </b>Runnable<b>). Konstruktor </b>Producer(Buffer
+
+      b)<b> tworzy nowy obiekt - producent, którego zadaniem jest
+        produkowanie i umieszczanie produktu w buforze </b>b<b>.
+        Przedefiniowana metoda </b>run()<b> zawiera nieskońzoną pętlę:</b><i>
+      </i><b>1. Generuje losowo jedną liczbę całkowitą; 2. Umieszcza ją
+        w buforze za pomocą metody </b>put(int)<b> lub czeka na
+        zwolnienie miejsca w przypadku pełngo bufora; 3. Zasypia na
+        losowy wybrany czas z przedziału od 0 do 2s.&nbsp;</b> </p>
+    <p><b>Konsument jest obiektem klasy </b>Consumer<b> (np.
+        implementującej </b>Runnable<span style="font-weight: bold;">)</span><i>.</i><b>
+        Konstruktor </b>Consumer(Buffer b)<b> tworzy nowy obiekt -
+        konsument, którego zadaniem jest pobieranie produktu z bufora </b>b<b>
+        i jego konsumowanie. Przedefiniowana metoda </b>run()<b>
+        zawiera nieskończoną pętlę:</b><i> </i><b>1. Pobiera jedną
+        liczbę z bufora za pomocą metody </b>int get() <span style="font-weight: bold;">lub czeka na nową liczbę w przypadku
+        pustego bufora;</span><b> 2. Konsumuje liczbę, czyli wyprowadza
+        ją na konsolę; 3. </b><b>Zasypia na losowy wybrany czas z
+        przedziału od 0 do 2s</b><b>.<br></b></p><p><b><u>Testowanie:</u></b> </p>
+    <b>1. Utworzyć obiekt klasy </b>Buffer<span style="font-weight: bold;"></span><span style="font-style: italic; font-weight: bold;"></span><br>
+    <b>2. Utworzyć obiekty klas </b>Producer<b>, </b>Consumer<b> oraz </b><b>uruchomić wątki&nbsp;</b><b>symulujące
+      działanie producenta oraz konsumenta na danym buforze,</b> <br>
+    <b>3. Program zakończy działanie po określonym czasie 15s.<br><br></b><b>W trakcie działania, program powinien wyprowadzać na
+      zewnątrz jak najwięcej informacji, aby można było śledzić jego
+      przebieg.</b>
+  </body></html>
